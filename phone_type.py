@@ -32,6 +32,9 @@ class Phone:
         time.sleep(1.5)
         slow_print(f'Кол-во пропущенных вызовов: {missed_calls_number}.')
 
+class SmartPhone(Phone):
+    pass
+
 
 rotary = Phone(dial_type_value='дисковый')
 keypad = Phone(dial_type_value='кнопочный')
