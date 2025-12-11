@@ -33,11 +33,16 @@ class Phone:
         slow_print(f'Кол-во пропущенных вызовов: {missed_calls_number}.')
 
 class SmartPhone(Phone):
-    pass
+
+    line_type = 'беспроводной'
+
+    def ring(self):
+        slow_print('Пам-пам-пам...ПАМ')
 
 
 rotary = Phone(dial_type_value='дисковый')
 keypad = Phone(dial_type_value='кнопочный')
+sensor = SmartPhone(dial_type_value='сенсорный')
 
 slow_print('Запрос информации о первом телефоне...')
 time.sleep(1.5)
@@ -46,3 +51,10 @@ slow_print('И он звонит с таким звуком:')
 rotary.ring()
 rotary.call('8-800-555-35-35')
 rotary.missed_calls(random.randint(1, 10))
+slow_print('Запрос информации о втором телефоне...')
+time.sleep(1.5)
+slow_print(f'{sensor}')
+slow_print('А он уже звонит с таким звуком:')
+sensor.ring()
+sensor.call('8-800-555-35-35')
+sensor.missed_calls(random.randint(1, 10))
