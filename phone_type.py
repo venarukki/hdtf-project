@@ -32,17 +32,25 @@ class Phone:
         time.sleep(1.5)
         slow_print(f'Кол-во пропущенных вызовов: {missed_calls_number}.')
 
-class SmartPhone(Phone):
+
+class MobilePhone(Phone):
 
     line_type = 'беспроводной'
+    battery_type = 'Li-ion'
+
+    def __init__(self, dial_type_value, network_type):
+        super().__init__(dial_type_value)
+        self.network_type = network_type
 
     def ring(self):
         slow_print('Пам-пам-пам...ПАМ')
 
+    def start_game(self):
+        slow_print('Игра запущена!')
+
 
 rotary = Phone(dial_type_value='дисковый')
-keypad = Phone(dial_type_value='кнопочный')
-sensor = SmartPhone(dial_type_value='сенсорный')
+keypad = MobilePhone(dial_type_value='кнопочный', network_type='4G')
 
 slow_print('Запрос информации о первом телефоне...')
 time.sleep(1.5)
@@ -53,8 +61,8 @@ rotary.call('8-800-555-35-35')
 rotary.missed_calls(random.randint(1, 10))
 slow_print('Запрос информации о втором телефоне...')
 time.sleep(1.5)
-slow_print(f'{sensor}')
+slow_print(f'{keypad}')
 slow_print('А он уже звонит с таким звуком:')
-sensor.ring()
-sensor.call('8-800-555-35-35')
-sensor.missed_calls(random.randint(1, 10))
+keypad.ring()
+keypad.call('8-800-555-35-35')
+keypad.missed_calls(random.randint(1, 10))
